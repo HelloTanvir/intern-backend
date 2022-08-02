@@ -1,12 +1,31 @@
-import { IsArray, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { IsArray, IsDateString, IsNotEmpty, IsNumberString, IsString } from 'class-validator';
 
 export class InternDto {
     @IsNotEmpty()
     @IsString()
-    name: string;
+    title: string;
 
-    @IsOptional()
+    @IsNotEmpty()
+    @IsString()
+    companyName: string;
+
+    @IsNotEmpty()
+    @IsString()
+    location: string;
+
+    @IsNotEmpty()
+    @IsNumberString()
+    salary: number;
+
+    @IsNotEmpty()
+    @IsDateString()
+    lastDate: string;
+
+    @IsNotEmpty()
+    @IsString()
+    description: string;
+
     @IsNotEmpty()
     @IsArray()
-    subCategories: string[];
+    skills: string[];
 }
