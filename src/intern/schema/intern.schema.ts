@@ -5,21 +5,30 @@ export type InternDocument = Intern & Document;
 
 @Schema({ timestamps: true })
 export class Intern {
-    @Prop({ type: SchemaTypes.String, required: [true, 'Intern name is required'], unique: true })
-    name: string;
+    @Prop({ type: SchemaTypes.String, required: [true, 'Intern title is required'] })
+    title: string;
 
-    @Prop({
-        type: [SchemaTypes.String],
-        default: [],
-    })
-    subCategories: string[];
+    @Prop({ type: SchemaTypes.String, required: [true, 'Company name is required'] })
+    companyName: string;
+
+    @Prop({ type: SchemaTypes.String, required: [true, 'Location is required'] })
+    location: string;
 
     @Prop({
         type: SchemaTypes.Number,
-        min: [0, 'Stock must be greater than 0'],
-        default: 0,
+        min: [0, 'Salary must be greater than 0'],
+        required: [true, 'Salary is required'],
     })
-    stock: number;
+    salary: number;
+
+    @Prop({ type: SchemaTypes.Date, required: [true, 'Last date is required'] })
+    lastDate: string;
+
+    @Prop({ type: SchemaTypes.String, required: [true, 'Description is required'] })
+    description: string;
+
+    @Prop({ type: [SchemaTypes.String], required: [true, 'skills are required'] })
+    skills: string[];
 }
 
 export const InternSchema = SchemaFactory.createForClass(Intern);
