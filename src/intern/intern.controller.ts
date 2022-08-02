@@ -1,4 +1,5 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Post } from '@nestjs/common';
+import { Public } from '../common/decorators';
 import { InternDto, InternUpdateDto } from './dto';
 import { InternService } from './intern.service';
 import { Intern } from './schema';
@@ -13,12 +14,14 @@ export class InternController {
         return this.internService.create(dto);
     }
 
+    @Public()
     @Get()
     @HttpCode(HttpStatus.OK)
     findAll(): Promise<Intern[]> {
         return this.internService.findAll();
     }
 
+    @Public()
     @Get('/:id')
     @HttpCode(HttpStatus.OK)
     findOne(@Param('id') id: string | number): Promise<Intern> {
