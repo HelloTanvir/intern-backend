@@ -9,11 +9,6 @@ export class InternService {
     constructor(@InjectModel(Intern.name) private readonly internModel: Model<InternDocument>) {}
 
     async create(dto: InternDto): Promise<Intern> {
-        const intern = await this.internModel.findOne({ name: dto.name });
-        if (intern) {
-            throw new ForbiddenException('intern already exists');
-        }
-
         const newIntern = new this.internModel(dto);
         await newIntern.save();
 
