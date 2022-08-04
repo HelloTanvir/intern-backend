@@ -14,6 +14,10 @@ export class InternDto {
     location: string;
 
     @IsNotEmpty()
+    @IsString()
+    duration: string;
+
+    @IsNotEmpty()
     @IsNumberString()
     salary: number;
 

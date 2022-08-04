@@ -26,6 +26,11 @@ export class InternUpdateDto {
 
     @IsOptional()
     @IsNotEmpty()
+    @IsString()
+    duration: string;
+
+    @IsOptional()
+    @IsNotEmpty()
     @IsNumberString()
     salary: number;
 

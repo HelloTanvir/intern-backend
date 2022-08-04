@@ -14,6 +14,9 @@ export class Intern {
     @Prop({ type: SchemaTypes.String, required: [true, 'Location is required'] })
     location: string;
 
+    @Prop({ type: SchemaTypes.String, required: [true, 'Internship duration is required'] })
+    duration: string;
+
     @Prop({
         type: SchemaTypes.Number,
         min: [0, 'Salary must be greater than 0'],
