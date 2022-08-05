@@ -8,6 +8,7 @@ import { Intern } from './schema';
 export class InternController {
     constructor(private internService: InternService) {}
 
+    @Public()
     @Post()
     @HttpCode(HttpStatus.CREATED)
     create(@Body() dto: InternDto): Promise<Intern> {
@@ -28,12 +29,14 @@ export class InternController {
         return this.internService.findOne(id);
     }
 
+    @Public()
     @Post('/:id')
     @HttpCode(HttpStatus.OK)
     update(@Param('id') id: string | number, @Body() dto: InternUpdateDto): Promise<Intern> {
         return this.internService.update(id, dto);
     }
 
+    @Public()
     @Delete('/:id')
     @HttpCode(HttpStatus.OK)
     delete(@Param('id') id: string | number): Promise<Intern> {
